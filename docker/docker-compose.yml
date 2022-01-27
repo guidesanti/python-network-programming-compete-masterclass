@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  py1:
+    build: .
+    image: py:0.0.1
+    volumes:
+      - ../main.py:/app/main.py
+    container_name: py1
+    domainname: eventhorizon.com.br
+    hostname: py1
+    ports:
+      - '2201:22'
+    networks:
+      - py-net
+
+  py2:
+    build: .
+    image: py:0.0.1
+    volumes:
+      - ../main.py:/app/main.py
+    container_name: py2
+    domainname: eventhorizon.com.br
+    hostname: py2
+    ports:
+      - '2202:22'
+    networks:
+      - py-net
+
+  py3:
+    build: .
+    image: py:0.0.1
+    volumes:
+      - ../main.py:/app/main.py
+    container_name: py3
+    domainname: eventhorizon.com.br
+    hostname: py3
+    ports:
+      - '2203:22'
+    networks:
+      - py-net
+
+networks:
+  py-net:
+    driver: bridge
